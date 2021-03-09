@@ -1,0 +1,37 @@
+{
+  "name": "taskall",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel src/index.html -d public",
+    "watch": "parcel watch src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/runtime-corejs2": "^7.2.0",
+    "@material-ui/core": "^3.7.1",
+    "babel-polyfill": "^6.26.0",
+    "firebase": "^5.7.1",
+    "react": "^16.7.0-alpha.2",
+    "react-dom": "^16.7.0-alpha.2",
+    "react-loading": "^2.0.3",
+    "react-swipe-to-delete-component": "^0.5.5",
+    "styled-components": "^4.1.3",
+    "validator": "^10.10.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.11.1",
+    "parcel-bundler": "^1.12.3",
+    "prettier": "^1.15.3",
+    "prettier-eslint": "^8.8.2",
+    "prettier-eslint-cli": "^4.7.1"
+  }
+}
