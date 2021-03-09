@@ -14,11 +14,11 @@ const Contents = styled.div`
     bottom: 0;
     left: 0;
     background: ${Color.SECONDARY};
-    padding: 5px;
+    margin: 0 10px 0 10px;
     padding-bottom: 20px;
-    width: 100%;
+    width: calc(100% - 20px);
     max-width: 100vw;
-    border-radius: 10px 50px 0 0;
+    border-radius: 10px 10px 0 0;
   }
 `
 
