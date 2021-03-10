@@ -7,22 +7,18 @@ import Todos from './Todos'
 import Login from './Login'
 
 import Color from '../const/Color'
+import Font from '../const/Font'
 
 const Main = styled.div`
   & {
-    /* position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0; */
-    /* height: 100%;
-    min-height: 100vh; */
+    font-family: ${Font.DEFAULT};
 
     background-color: ${Color.INFO};
     display: flex;
     justify-content: center;
     align-items: flex-start;
     margin-top: 58px;
+    margin-bottom: 78px;
     padding: 20px;
   }
 `

@@ -4,77 +4,79 @@ import React, {
   useState,
   useMemo,
   useCallback,
-} from "react";
-import { AuthContext } from "./auth";
-import { db } from "../utils/firebase";
+} from 'react'
+import { AuthContext } from './auth'
+import { db } from '../utils/firebase'
 
-const TodosContext = createContext();
+const TodosContext = createContext()
 
 const TodosProvider = ({ children }) => {
-  const [todos, setTodos] = useState([]);
-  const { currentUser } = useContext(AuthContext);
+  const [todos, setTodos] = useState([])
+  const { currentUser } = useContext(AuthContext)
 
   const collection = useMemo(() => {
-    const col = db.collection("todos");
+    const col = db.collection('todos')
 
     // 更新イベント監視
-    col.where("uid", "==", currentUser.uid).onSnapshot((query) => {
-      const data = [];
-      query.forEach((d) => data.push({ ...d.data(), docId: d.id }));
-      setTodos(data);
-    });
+    col.where('uid', '==', currentUser.uid).onSnapshot(query => {
+      const data = []
+      query.forEach(d => data.push({ ...d.data(), docId: d.id }))
+      setTodos(data)
+    })
 
-    return col;
-  }, []);
+    return col
+  }, [])
 
-  const add = useCallback(async (text) => {
+  const add = useCallback(async (text, memo) => {
     try {
       await collection.add({
         uid: currentUser.uid,
         text,
+        memo,
         isComplete: false,
         createdAt: new Date(),
-      });
+      })
     } catch (e) {
-      console.log(e);
+      console.log(e)
     }
-  }, []);
+  }, [])
 
   const update = useCallback(
-    async ({ docId, text, isComplete }) => {
+    async ({ docId, text, memo, isComplete }) => {
       const updateTo = {
-        ...todos.find((t) => t.docId === docId),
+        ...todos.find(t => t.docId === docId),
         text,
+        memo,
         isComplete,
-      };
+      }
       if (isComplete) {
-        updateTo.completedAt = new Date();
+        updateTo.completedAt = new Date()
       }
       try {
-        await collection.doc(docId).set(updateTo);
+        await collection.doc(docId).set(updateTo)
       } catch (e) {
-        console.log(e);
+        console.log(e)
       }
     },
     [todos]
-  );
+  )
 
   const remove = useCallback(
     async ({ docId }) => {
       try {
-        await collection.doc(docId).delete();
+        await collection.doc(docId).delete()
       } catch (e) {
-        console.log(e);
+        console.log(e)
       }
     },
     [todos]
-  );
+  )
 
   return (
     <TodosContext.Provider value={{ todos, add, update, remove }}>
       {children}
     </TodosContext.Provider>
-  );
-};
+  )
+}
 
-export { TodosContext, TodosProvider };
+export { TodosContext, TodosProvider }

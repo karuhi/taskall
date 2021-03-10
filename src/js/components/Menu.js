@@ -16,6 +16,8 @@ const Contents = styled.div`
     background: ${Color.SECONDARY};
     width: 100%;
     height: 58px;
+    z-index: 99999;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
   }
 `
 const TitleLogo = {
