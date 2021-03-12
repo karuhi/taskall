@@ -18,11 +18,14 @@ const TodosProvider = ({ children }) => {
     const col = db.collection('todos')
 
     // 更新イベント監視
-    col.where('uid', '==', currentUser.uid).onSnapshot(query => {
-      const data = []
-      query.forEach(d => data.push({ ...d.data(), docId: d.id }))
-      setTodos(data)
-    })
+    col
+      .where('uid', '==', currentUser.uid)
+      .orderBy('createdAt')
+      .onSnapshot(query => {
+        const data = []
+        query.forEach(d => data.push({ ...d.data(), docId: d.id }))
+        setTodos(data)
+      })
 
     return col
   }, [])

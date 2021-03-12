@@ -1,9 +1,8 @@
-import React, { useContext, Fragment } from 'react'
+import React, { useContext, Fragment, useState } from 'react'
 import {
   List,
   ListItem,
   ListItemText,
-  ListItemSecondaryAction,
   Button,
   Checkbox,
   Divider,
@@ -46,7 +45,7 @@ const StyledMarkDown = styled(ReactMarkdown)`
 export default () => {
   const { todos, update, remove } = useContext(TodosContext)
 
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = useState(false)
 
   const handleClick = index => {
     setOpen({ [index]: !open[index] })

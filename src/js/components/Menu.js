@@ -1,6 +1,6 @@
-import React, { useContext, useState, useCallback } from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { TextField, Button } from '@material-ui/core'
+import { Button } from '@material-ui/core'
 import { AuthContext } from '../contexts/auth'
 
 import Color from '../const/Color'

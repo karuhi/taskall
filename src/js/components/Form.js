@@ -68,6 +68,7 @@ const MemoTextfield = styled(TextField)`
     margin: 10px;
     height: 300px;
     width: calc(50% - 20px);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
   }
 `
 
@@ -79,6 +80,7 @@ const StyledMarkDown = styled(ReactMarkdown)`
     background: ${Color.INFO};
     padding: 10px;
     margin: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
   }
 `
 
